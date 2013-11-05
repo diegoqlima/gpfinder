@@ -1,0 +1,10 @@
+#.gitignore
+.gitconfig
+
+# OS files #
+.DS_Store
+
+# Eclipse files #
+.buildpath
+.project
+.settings/
