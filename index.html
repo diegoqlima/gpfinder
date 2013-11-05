@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GPFinder</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta content="Find a GP near you" name="description" />
+<meta content="Diego Lima" name="author" />
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen" />
+<style type="text/css">
+.navbar-fixed-top .container{
+  width: 100%;
+}
+.navbar.navbar-inverse .navbar-inner{
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.tile-link{
+position: absolute;
+top: 0;
+width: 100%;
+height: 100%;
+}
+
+.tile-cta-overlay{
+opacity: 0;
+position: absolute;
+top: 1px;
+left: 0;
+width: 100%;
+height: 284px;
+background-color: rgba(0,0,0,0.6);
+-webkit-transition: opacity 0.3s 0.2s;
+-moz-transition: opacity 0.3s 0.2s;
+-ms-transition: opacity 0.3s 0.2s;
+-o-transition: opacity 0.3s 0.2s;
+transition: opacity 0.3s 0.2s;
+}
+
+.tile-cta {
+display: none;
+margin: 70px 0 0;
+width: 100%;
+height: 75px;
+background-color: rgba(0,204,255,0.75);
+color: #fff;
+font-family: 'lorimer', Helvetica, Arial, sans-serif;
+letter-spacing: .06em;
+font-size: 30px;
+text-transform: uppercase;
+text-align: center;
+line-height: 75px;
+white-space: nowrap;
+}
+
+.tile-bar-bottom {
+display: none;
+position: relative;
+top: 210px;
+height: 75px;
+}
+
+.tile-branding, .tile-info{
+height: 55px;
+margin: 0;
+padding: 10px;
+background-color: rgba(0,0,0,0.65);
+overflow: hidden;
+}
+
+.tile-branding{
+float: left;
+text-align: center;
+width: 160px;
+}
+
+.tile-info {
+width: 165px;
+float: right;
+line-height: 16px;
+}
+
+.tile-info-primary, .tile-info-secondary{
+display: inline-block;
+width: 100%;
+height: 46px;
+vertical-align: middle;
+-webkit-transition: all 0.25s 0.1s;
+-moz-transition: all 0.25s 0.1s;
+-ms-transition: all 0.25s 0.1s;
+-o-transition: all 0.25s 0.1s;
+transition: all 0.25s 0.1s;
+}
+
+.tile-info-secondary.promo {
+height: 35px;
+padding: 10px 0 0;
+text-align: center;
+text-transform: uppercase;
+background-color: rgba(0,0,0,0.65);
+}
+
+.tile-info-secondary {
+margin-top: 20px;
+opacity: 0;
+color: #aaa;
+}
+
+.tile-info-secondary .tile-title {
+font-size: 20px;
+}
+
+.tile-info-secondary.promo .tile-title {
+color: #aaa;
+}
+
+.tile-title{
+color: #fff;
+font-size: 22px;
+font-weight: bold;
+letter-spacing: 0;
+-webkit-font-smoothing: antialiased;
+}
+
+.tile-subtitle{
+color: #aaa;
+font-size: 17px;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.tile-title, .tile-subtitle {
+display: block;
+float: left;
+width: 100%;
+margin: 3px 0;
+font-family: 'lorimer', Helvetica, Arial, sans-serif;
+letter-spacing: .06em;
+line-height: .9em;
+white-space: nowrap;
+}
+
+.row-box{
+position: relative;
+display: inline-block;
+float: left;
+width: 370px;
+height: 284px;
+padding: 0;
+-webkit-box-shadow: 0 2px 1px #000;
+-moz-box-shadow: 0 2px 1px #000;
+box-shadow: 0 2px 1px #000;
+}
+
+.row-wide-box{
+position: relative;
+display: inline-block;
+float: left;
+width: 662px;
+height: 284px;
+padding: 0;
+-webkit-box-shadow: 0 2px 1px #000;
+-moz-box-shadow: 0 2px 1px #000;
+box-shadow: 0 2px 1px #000;
+}
+</style>
+</head>
+<body style="background:#000;">
+<!-- Begin Menu -->
+<div class="navbar-fixed-top">
+  <div class="container">
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <a class="brand" href="#">GPFinder</a>
+        <ul class="nav">
+          <li class="divider-vertical"></li>
+          <li class="active"><a href="#">About</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="#">Girls</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>  
+</div>
+<!-- End Menu -->
+<!-- Begin Carousel -->
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="active item"><img src="img/background1.png" style="width: 1600px; height: 400px;"/></div>
+    <div class="item"><img src="img/background2.jpg" style="width: 1600px; height: 400px;"/></div>
+    <div class="item"><img src="img/background3.png" style="width: 1600px; height: 400px;"/></div>
+  </div>
+  <a class="left carousel-control" data-slide="prev" href="#myCarousel">&lsaquo;</a>
+  <a class="right carousel-control" data-slide="next" href="#myCarousel">&rsaquo;</a>
+</div>
+<!-- End Carousel -->
+<!-- Begin Container -->
+<div class="container" style="margin-top: 40px;">
+  <div class="row">
+	  <div class="span4 row-box">
+		    <!-- begin background image -->
+		    <div data-alt="Ruby" data-picture="data-picture">
+		      <div class="narrow-hero" data-src="img/image1.jpg">
+		        <img alt="Ruby" src="img/image1.jpg">
+		      </div>
+		      <div class="hero" data-media="(max-width: 568px)" data-src="img/image1.jpg"></div>
+		    </div>
+		    <!-- end background image -->
+		    <!--  begin image detail -->
+		    <a href="#" class="tile-link">
+		      <div class="tile-cta-overlay">
+		        <div class="tile-cta">See more details<i class="icon-right-dir"></i></div>
+		      </div>
+		      <div class="tile-bar-bottom">
+		        <div class="tile-branding">
+		          <span class="v-align-helper"></span>
+		          <div class="tile-info-primary">
+                <span class="tile-title">Ruby</span>
+              </div>
+		        </div>
+		        <div class="tile-info">
+		          <span class="v-align-helper"></span>
+		          <div class="tile-info-primary">
+		            <span class="tile-title">Ruby</span>
+		            <span class="tile-subtitle">The best language</span>
+		          </div>
+		        </div>
+		      </div>
+		    </a>
+		    <!-- end image detail -->
+	  </div>
+	  <div class="span4 row-wide-box">
+	    <!-- begin background image -->
+        <div data-alt="Ruby" data-picture="data-picture">
+          <div class="narrow-hero" data-src="img/image2.jpg">
+            <img alt="Ruby" src="img/image2.jpg">
+          </div>
+          <div class="hero" data-media="(max-width: 568px)" data-src="img/image2.jpg"></div>
+        </div>
+        <!-- end background image -->
+        <!--  begin image detail -->
+        <a href="#" class="tile-link">
+          <div class="tile-cta-overlay">
+            <div class="tile-cta">See more details<i class="icon-right-dir"></i></div>
+          </div>
+          <div class="tile-bar-bottom">
+            <div class="tile-info-secondary promo">
+              <span class="tile-title">Give the Gift of Gear</span>
+            </div>
+          </div>
+        </a>
+        <!-- end image detail -->
+	  </div>
+  </div>
+</div>
+<!-- End Container -->
+<!-- Begin Footer -->
+<div class="footer">© 2013 GPFinder - Todos os direitos reservados</div>
+<!-- End Footer -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-transition.js"></script>
+<script type="text/javascript" src="js/bootstrap-carousel.js"></script>
+<script type="text/javascript">
+$(function(){
+  $(".span4").mouseover(function(){
+	  $(this).children('.tile-link').children('.tile-cta-overlay').fadeTo("fast",100);
+	  $(this).children('.tile-link').children('.tile-cta-overlay').children('.tile-cta').show();
+	  $(this).children('.tile-link').children('.tile-bar-bottom').show();
+  });
+  $(".span4").mouseout(function(){
+	  $(this).children('.tile-link').children('.tile-cta-overlay').fadeTo("fast",0);
+	  $(this).children('.tile-link').children('.tile-cta-overlay').children('.tile-cta').hide();
+	  $(this).children('.tile-link').children('.tile-bar-bottom').hide();
+  });
+});
+</script>
+<script type="text/javascript">
+$(function(){
+  $('#myCarousel').carousel()
+});
+</script>
+</body>
+</html>
