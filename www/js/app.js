@@ -6,24 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
-.run(function($ionicPlatform, $cordovaGeolocation) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-    
-    var posOptions = {
-      timeout: 10000,
-      frequency: 1000
-    };
-    
-    $cordovaGeolocation
-    .getCurrentPosition(posOptions)
-    .then(function (position) {
-
-      console.log(position.coords.latitude);
-      console.log(position.coords.longitude);
-    }, function (err) {
-      // error
-    });
-    
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -36,6 +20,51 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       StatusBar.styleDefault();
     }
   });
+})
+
+.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoading) {
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+  function onDeviceReady() {
+    $ionicLoading.show({
+      template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Buscando localização!'
+    });
+  } 
+  var posOptions = {
+    enableHighAccuracy: true,
+    timeout: 10000,
+    frequency: 1000,
+    maximumAge: 0
+  };
+  $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+    
+    var lat  = position.coords.latitude;
+    var long = position.coords.longitude;
+    
+    var myLatlng = new google.maps.LatLng(lat, long);
+ 
+    var mapOptions = {
+        center: myLatlng,
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };          
+ 
+    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions); 
+    
+    google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+      var marker = new google.maps.Marker({
+          map: $scope.map,
+          animation: google.maps.Animation.DROP,
+          position: myLatlng
+      });      
+    });       
+ 
+    $ionicLoading.hide();
+  }, function(err) {
+    $ionicLoading.hide();
+    console.log(err);
+  });
+
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -85,5 +114,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  // $urlRouterProvider.otherwise('/app/playlists');
 });
